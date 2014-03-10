@@ -22,4 +22,5 @@ $messages['en'] = array(
     'viewwikitext-badtitle' => "'''[[$1]]''' does not exist.",
     'viewwikitext-lookup-page' => 'Display raw markup',
     'viewwikitext-page-lookup' => 'View wikitext of page:',
+    'viewwikitext-url' => 'Special:ViewWikitext/{{FULLPAGENAMEE}}',
 );
