@@ -27,6 +27,7 @@ class SpecialViewWikitext extends SpecialPage {
          Html::closeElement( 'form' ) . "\n"
       );
       if ( $par ) {
+         $par = str_replace( '_', ' ', $par );
          $title = Title::newFromText( $par );
          if ( !$title ) {
             $output->addWikiMsgArray( 'viewwikitext-badtitle', $par );
