@@ -17,9 +17,9 @@ $messages = array();
  */
 $messages['en'] = array(
     'viewwikitext' => 'View wikitext',
-    'viewwikitext-desc' => 'Implements [[Special:ViewWikitext|a special page]] that displays an unformatted list of all pages on the wiki.',
+    'viewwikitext-desc' => 'Implements [[Special:ViewWikitext|a special page]] that displays the raw wikitext of a page.',
     'viewwikitext-intro' => 'Here is the wikitext of [[$1]]:',
-    'viewwikitext-notitleselected' => "No title selected.",
     'viewwikitext-badtitle' => "'''[[$1]]''' does not exist.",
-    'viewwikitext-plain' => '<plaintext>$1</plaintext>'
+    'viewwikitext-lookup-page' => 'Display raw markup',
+    'viewwikitext-page-lookup' => 'View wikitext of page:',
 );

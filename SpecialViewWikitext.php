@@ -12,9 +12,21 @@ class SpecialViewWikitext extends SpecialPage {
    function execute( $par ) {
       $this->setHeaders();
       $output = $this->getOutput();
+      global $wgScript;
+      $request = $this->getRequest();
       if ( !$par ) {
-         $output->addWikiMsgArray( 'viewwikitext-notitleselected', $par );
-      } else {
+         $par = $request->getVal( 'page' );
+      }
+      $this->getOutput()->addHTML(
+         Html::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript, 'name' => 'uluser', 'id' => 'viewwikitext-form1' ) ) .
+         Html::hidden( 'title', $this->getPageTitle()->getPrefixedText() ) .
+         Xml::fieldset( $this->msg( 'viewwikitext-lookup-page' )->text() ) .
+         Xml::inputLabel( $this->msg( 'viewwikitext-page-lookup' )->text(), 'page', 'username', 30, str_replace( '_', ' ', $par ), array( 'autofocus' => true ) ) . ' ' .
+         Xml::submitButton( $this->msg( 'htmlform-submit' )->text() ) .
+         Html::closeElement( 'fieldset' ) .
+         Html::closeElement( 'form' ) . "\n"
+      );
+      if ( $par ) {
          $title = Title::newFromText( $par );
          if ( !$title ) {
             $output->addWikiMsgArray( 'viewwikitext-badtitle', $par );
