@@ -41,7 +41,17 @@ class SpecialViewWikitext extends SpecialPage {
                $output->addWikitext( $outputText );
                $content = $revision->getContent( Revision::FOR_THIS_USER, $this->getUser() );
                $text = ContentHandler::getContentText( $content );
-               $output->addHTML( htmlentities( $text ) );
+               $pageLang = $title->getPageLanguage();
+               $params = array(
+               'id' => 'wpTextbox1',
+               'name' => 'wpTextbox1',
+               'cols' => $this->getUser()->getOption( 'cols' ),
+               'rows' => $this->getUser()->getOption( 'rows' ),
+               'readonly' => 'readonly',
+               'lang' => $pageLang->getHtmlCode(),
+               'dir' => $pageLang->getDir(),
+               );
+               $output->addHTML( Html::element( 'textarea', $params, $text ) );
             }
          }
       }
